@@ -96,3 +96,20 @@ app.use(limiter);
   }
 })();
 
+/**
+ * Handles server shutdown gracefully by disconnecting from the database.
+ */
+const handleServerShutdown = async () => {
+  try {
+    console.log('Server SHUTDOWN');
+    process.exit(0);
+  } catch (err) {
+    console.log('Error during server shutdown', err);
+  }
+};
+
+/**
+ * Listens for termination signals ('SIGTERM' and 'SIGINT').
+ */
+process.on('SIGTERM', handleServerShutdown);
+process.on('SIGINT', handleServerShutdown);
