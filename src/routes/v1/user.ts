@@ -23,6 +23,7 @@ import getCurrentUser from '@/controllers/v1/user/get_current_user';
 import updateCurrentUser from '@/controllers/v1/user/update_current_user';
 import deleteCurrentUser from '@/controllers/v1/user/delete_current_user';
 import getAllUser from '@/controllers/v1/user/get_all_user';
+import getUser from '@/controllers/v1/user/get_user';
 
 /**
  * Models
@@ -111,6 +112,15 @@ router.get(
     .withMessage('Page must be a positive integer'),
   validationError,
   getAllUser,
+);
+
+router.get(
+  '/:userId',
+  authenticate,
+  authorize(['admin']),
+  param('userId').notEmpty().isMongoId().withMessage('Invalid user Id'),
+  validationError,
+  getUser,
 );
 
 export default router;
