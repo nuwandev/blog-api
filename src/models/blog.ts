@@ -75,15 +75,15 @@ const blogSchema = new Schema<IBlog>(
     },
     viewsCount: {
       type: Number,
-      deflate: 0,
+      default: 0,
     },
     likesCount: {
       type: Number,
-      deflate: 0,
+      default: 0,
     },
     commentsCount: {
       type: Number,
-      deflate: 0,
+      default: 0,
     },
     status: {
       type: String,
