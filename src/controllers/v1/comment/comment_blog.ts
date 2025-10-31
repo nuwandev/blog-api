@@ -41,7 +41,7 @@ const commentBlog = async (req: Request, res: Response): Promise<void> => {
 
   try {
     const blog = await Blog.findById(blogId)
-      .select('_idd commentsCount')
+      .select('_id commentsCount')
       .exec();
 
     if (!blog) {
