@@ -73,6 +73,7 @@ src/
 PORT=3000
 NODE_ENV=development
 MONGO_URI=<your-mongo-uri>
+LOG_LEVEL=info
 JWT_ACCESS_SECRET=<your-access-secret>
 JWT_REFRESH_SECRET=<your-refresh-secret>
 ACCESS_TOKEN_EXPIRY=1h
