@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
     message: 'API is live',
     status: 'ok',
     version: '1.0.0',
-    docs: 'https://docs.blog-api.codewithsadee.com',
+    docs: 'https://docs.blog-api.nuwandev.site',
     timestamp: new Date().toISOString(),
   });
 });
