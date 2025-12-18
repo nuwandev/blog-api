@@ -130,10 +130,3 @@ This project taught me how to:
 **Apache 2.0 License © 2025 nuwandev**
 
 ---
-
-## ✨ Notes
-
-This API was built **for learning**, but with **real production practices** —
-secure, maintainable, documented, and deployed.
-
-It’s the foundation for my future full-stack applications and showcases my backend fundamentals, system design understanding, and attention to clean structure.
