@@ -54,7 +54,7 @@ router.put(
       const userExists = await User.exists({ username: value });
 
       if (userExists) {
-        throw Error('This username is already in use');
+        throw new Error('This username is already in use');
       }
     }),
   body('email')
@@ -67,7 +67,7 @@ router.put(
       const userExists = await User.exists({ email: value });
 
       if (userExists) {
-        throw Error('This email is already in use');
+        throw new Error('This email is already in use');
       }
     }),
   body('password')

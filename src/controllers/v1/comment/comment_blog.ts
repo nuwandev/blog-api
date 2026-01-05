@@ -40,9 +40,7 @@ const commentBlog = async (req: Request, res: Response): Promise<void> => {
   const userId = req.userId;
 
   try {
-    const blog = await Blog.findById(blogId)
-      .select('_id commentsCount')
-      .exec();
+    const blog = await Blog.findById(blogId).select('_id commentsCount').exec();
 
     if (!blog) {
       res.status(404).json({

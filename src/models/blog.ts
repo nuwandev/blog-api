@@ -7,7 +7,6 @@
  * Node modules
  */
 import { Schema, model, Types } from 'mongoose';
-import { deflate } from 'zlib';
 
 /**
  * Custom modules

@@ -12,7 +12,7 @@ import mongoose from 'mongoose';
  * Custom modules
  */
 import config from '@/config';
-import {logger} from '@/lib/winston'
+import { logger } from '@/lib/winston';
 
 /**
  * Types
@@ -69,9 +69,9 @@ export const disconnectFromDatabase = async (): Promise<void> => {
     });
   } catch (err) {
     if (err instanceof Error) {
-      throw new Error(err.message)
+      throw new Error(err.message);
     }
 
-    logger.error('Error disconnecting from the database', err)
+    logger.error('Error disconnecting from the database', err);
   }
 };

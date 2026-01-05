@@ -31,9 +31,10 @@ const getAllBlogsByUser = async (
   try {
     const userId = req.params.userId;
     const currentUserId = req.userId;
-    const limit = parseInt(req.query.limit as string) || config.defaultResLimit;
+    const limit =
+      Number.parseInt(req.query.limit as string) || config.defaultResLimit;
     const offset =
-      parseInt(req.query.offset as string) || config.defaultResOffset;
+      Number.parseInt(req.query.offset as string) || config.defaultResOffset;
 
     const currentUser = await User.findById(currentUserId)
       .select('role')

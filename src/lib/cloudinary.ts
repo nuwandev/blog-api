@@ -31,24 +31,26 @@ const uploadToCloudinary = (
   publicId?: string,
 ): Promise<UploadApiResponse | undefined> => {
   return new Promise((resolve, reject) => {
-    cloudinary.uploader.upload_stream(
-      {
-        allowed_formats: ['png', 'jpg', 'webp'],
-        resource_type: 'image',
-        folder: 'blog-api',
-        public_id: publicId,
-        transformation: { quality: 'auto' },
-      },
-      (err, result) => {
-        if (err) {
-          logger.error('Error uploading image to Cloudinary', err);
-          reject(err);
-        }
+    cloudinary.uploader
+      .upload_stream(
+        {
+          allowed_formats: ['png', 'jpg', 'webp'],
+          resource_type: 'image',
+          folder: 'blog-api',
+          public_id: publicId,
+          transformation: { quality: 'auto' },
+        },
+        (err, result) => {
+          if (err) {
+            logger.error('Error uploading image to Cloudinary', err);
+            reject(new Error(JSON.stringify(err)));
+          }
 
-        resolve(result);
-      },
-    ).end(buffer);
-  })
+          resolve(result);
+        },
+      )
+      .end(buffer);
+  });
 };
 
 export default uploadToCloudinary;

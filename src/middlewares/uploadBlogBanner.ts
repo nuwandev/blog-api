@@ -84,13 +84,31 @@ const uploadBlogBanner = (method: 'post' | 'put') => {
 
       req.body.banner = newBanner;
       next();
-    } catch (err: UploadApiErrorResponse | any) {
-      res.status(err.http_code).json({
-        code: err.http_code < 500 ? 'ValidationError' : err.name,
-        message: err.message,
-      });
+    } catch (err: unknown) {
+      if (
+        typeof err === 'object' &&
+        err !== null &&
+        'http_code' in err &&
+        'message' in err
+      ) {
+        const error = err as UploadApiErrorResponse;
+        res.status(error.http_code).json({
+          code: error.http_code < 500 ? 'ValidationError' : error.name,
+          message: error.message,
+        });
 
-      logger.error('Error  while uploading blog banner to Cloudinary', err);
+        logger.error('Error  while uploading blog banner to Cloudinary', error);
+      } else {
+        res.status(500).json({
+          code: 'ServerError',
+          message: 'Internal server error',
+        });
+
+        logger.error(
+          'Unknown error while uploading blog banner to Cloudinary',
+          err,
+        );
+      }
     }
   };
 };

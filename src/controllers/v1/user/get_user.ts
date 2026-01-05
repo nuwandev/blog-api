@@ -6,7 +6,6 @@
 /**
  * Custom modules
  */
-import config from '@/config';
 import { logger } from '@/lib/winston';
 
 /**
